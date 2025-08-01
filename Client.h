@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include "Logs.h"
 /*
 Текущее состояние задачи
 */
@@ -30,11 +30,29 @@ private:
 
 public:
 	//Конструкторы
-	Client() {};
-	Client(std::string ID, double payment, double timeElapsed_minutes, EclientWorkState workState, std::string workInfo, int numberInTable)
-		: ID(ID), payment(payment), timeElapsed_minutes(timeElapsed_minutes), workState(workState), workInfo(workInfo), numberInTable(numberInTable)
+	Client() 
 	{
+		std::string toLog = "Client created: " + ID + " " + std::to_string(payment) + " "
+			+ std::to_string(timeElapsed_minutes) + " " + std::to_string(workState) + " " + workInfo + " "
+			+ std::to_string(numberInTable) + " " + workComment + "\n";
 
+		std::cout << "Client created. " << ID << " " << payment << " " << timeElapsed_minutes << " "
+			<< workState << " " << workInfo << " " << numberInTable << " " << workComment << "\n";
+
+		printLog(toLog);
+	};
+
+	Client(std::string ID, double payment, double timeElapsed_minutes, EclientWorkState workState, std::string workInfo, int numberInTable)
+		: ID(ID), payment( payment ), timeElapsed_minutes( timeElapsed_minutes ), workState( workState ), workInfo( workInfo ), numberInTable( numberInTable )
+	{
+		std::string toLog  = "Client created: " + ID + " " + std::to_string( payment ) + " "
+			+ std::to_string( timeElapsed_minutes ) + " " + std::to_string( workState ) + " " + workInfo + " " 
+			+ std::to_string( numberInTable ) + " " + workComment + "\n";
+
+		std::cout << "Client created. " << ID << " " << payment << " " << timeElapsed_minutes << " " 
+			<< workState << " " << workInfo << " " << numberInTable << " " << workComment << "\n";
+
+		printLog(toLog);
 	};
 
 	///Геттеры
