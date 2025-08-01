@@ -18,6 +18,7 @@ double Client::get_timeElapsed_minutes() const
 
 EclientWorkState Client::get_workState() const
 {
+	std::cout << workState << "\n";
 	return workState;
 }
 
@@ -78,8 +79,9 @@ void Client::set_workState()
 		<< "3 - Завершён, НЕ оплачен.\n"
 		<< "4 - Завершён, оплачен.\n"
 		<< "Введите текущий этой задачи статус: ";
-	uint8_t workStateID = 0;
+	short int workStateID = 0;
 	std::cin >> workStateID;
+	std::cin.ignore();
 
 
 	switch ( workStateID )
