@@ -6,12 +6,12 @@ std::string Client::get_ID() const
 	return ID;
 }
 
-double Client::get_payment() const
+int Client::get_payment() const
 {
 	return payment;
 }
 
-double Client::get_timeElapsed_minutes() const
+int Client::get_timeElapsed_minutes() const
 {
 	return timeElapsed_minutes;
 }
@@ -54,7 +54,7 @@ void Client::set_payment()
 	std::cin >> payment;
 }
 
-void Client::set_payment( double payment )
+void Client::set_payment( int payment )
 {
 	this->payment = payment;
 }
@@ -65,7 +65,7 @@ void Client::set_timeElapsed_minutes()
 	std::cin >> timeElapsed_minutes;
 }
 
-void Client::set_timeElapsed_minutes( double timeElapsed_minutes )
+void Client::set_timeElapsed_minutes( int timeElapsed_minutes )
 {
 	this->timeElapsed_minutes = timeElapsed_minutes;
 }
