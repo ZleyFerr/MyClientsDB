@@ -25,6 +25,7 @@ void createLogFile()
 
   std::string LogFileName = LogName_part1 + LogName_part2 + LogName_part3;
   currentLogFile.open(LogFileName);
+  currentLogFile << "Дата Время Действие\n";
 }
 
 //Вывод сообщения с временем
@@ -42,8 +43,8 @@ void printLog(std::string LogMessage)
   std::stringstream ss;
   ss << std::put_time(&tstruct, "%Y-%m-%d %H:%M:%S");
   std::string formattedTime = ss.str();
-  std::cout << "[" << formattedTime << "]: " << LogMessage << "\n";
-  currentLogFile << "[" << formattedTime << "]: " << LogMessage << "\n";
+  std::cout << "[" << formattedTime << "]: " << LogMessage;
+  currentLogFile << "[" << formattedTime << "]: " << LogMessage;
 }
 
 //Вывод времени 
