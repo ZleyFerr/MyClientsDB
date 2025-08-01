@@ -21,8 +21,8 @@ class Client
 {
 private:
 	std::string ID = "";                        //ID телеграмма пользователя или его номер
-	double payment = 0.0;                       // Цена за работу
-	double timeElapsed_minutes = 0.0;           // Затраченное время в минутах
+	int payment = 0;                       // Цена за работу
+	int timeElapsed_minutes = 0;           // Затраченное время в минутах
 	EclientWorkState workState = notStarted;		// Статус задачи
 	std::string workInfo = "";                  // Описание задачи
 	int numberInTable = 0;											// Номер в таблице [Присваеывается автоматически]
@@ -32,25 +32,18 @@ public:
 	//Конструкторы
 	Client() 
 	{
-		std::string toLog = "Client created: " + ID + " " + std::to_string(payment) + " "
+		std::string toLog = "Клиент добавлен: " + ID + " " + std::to_string(payment) + " "
 			+ std::to_string(timeElapsed_minutes) + " " + std::to_string(workState) + " " + workInfo + " "
 			+ std::to_string(numberInTable) + " " + workComment + "\n";
-
-		std::cout << "Client created. " << ID << " " << payment << " " << timeElapsed_minutes << " "
-			<< workState << " " << workInfo << " " << numberInTable << " " << workComment << "\n";
-
 		printLog(toLog);
 	};
 
-	Client(std::string ID, double payment, double timeElapsed_minutes, EclientWorkState workState, std::string workInfo, int numberInTable)
+	Client(std::string ID, int payment, int timeElapsed_minutes, EclientWorkState workState, std::string workInfo, int numberInTable)
 		: ID(ID), payment( payment ), timeElapsed_minutes( timeElapsed_minutes ), workState( workState ), workInfo( workInfo ), numberInTable( numberInTable )
 	{
-		std::string toLog  = "Client created: " + ID + " " + std::to_string( payment ) + " "
+		std::string toLog  = "Клиент добавлен: " + ID + " " + std::to_string( payment ) + " "
 			+ std::to_string( timeElapsed_minutes ) + " " + std::to_string( workState ) + " " + workInfo + " " 
 			+ std::to_string( numberInTable ) + " " + workComment + "\n";
-
-		std::cout << "Client created. " << ID << " " << payment << " " << timeElapsed_minutes << " " 
-			<< workState << " " << workInfo << " " << numberInTable << " " << workComment << "\n";
 
 		printLog(toLog);
 	};
@@ -59,9 +52,9 @@ public:
 	//получить ID телеграмма пользователя или его номер
 	std::string get_ID() const;
 	//получить цену за работу
-	double get_payment() const;
+	int get_payment() const;
 	//получить затраченное время в минутах
-	double get_timeElapsed_minutes() const; 
+	int get_timeElapsed_minutes() const; 
 	//получить статус задачи
 	EclientWorkState get_workState() const;
 	//получить описание задачи
@@ -77,10 +70,10 @@ public:
 	void set_ID( std::string ID );
 	//задать цену за работу
 	void set_payment();
-	void set_payment( double payment );
+	void set_payment( int payment );
 	//задать затраченное время в минутах
 	void set_timeElapsed_minutes();
-	void set_timeElapsed_minutes( double timeElapsed_minutes );
+	void set_timeElapsed_minutes( int timeElapsed_minutes );
 	//задать статус задачи
 	void set_workState();
 	void set_workState( EclientWorkState workState );
