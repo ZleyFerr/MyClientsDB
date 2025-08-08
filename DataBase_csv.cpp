@@ -1,6 +1,6 @@
 #include "DataBase_csv.h"
 
-//Z_DB - пространство имён для работы с базой данных Zwork
+//Z_DB - РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ РёРјС‘РЅ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С… Zwork
 namespace Z_DB
 {
 	const std::string DB_name = "zwrk_data.csv";
@@ -10,7 +10,7 @@ namespace Z_DB
 std::vector<Client> clients;
 
 
-//Открытие файла датабазы
+//РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° РґР°С‚Р°Р±Р°Р·С‹
 void openDB()
 {
 	Z_DB::dataBase.open(Z_DB::DB_name, std::ios::in | std::ios::out);
@@ -19,25 +19,25 @@ void openDB()
 	SetConsoleOutputCP(1251);
 	if (!Z_DB::dataBase.is_open())
 	{
-		std::string toLog = "[ERROR] Ошибка открытия файла.\n";
+		std::string toLog = "[ERROR] РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°.\n";
 		printLog(toLog);
 		return;
 	}
 	else
 	{
-		std::string toLog = "[INFO] Файл zwrk_data.csv открыт.\n";
+		std::string toLog = "[INFO] Р¤Р°Р№Р» zwrk_data.csv РѕС‚РєСЂС‹С‚.\n";
 		printLog(toLog);
 	}
 }
 
-//Парсинг файла датабазы
+//РџР°СЂСЃРёРЅРі С„Р°Р№Р»Р° РґР°С‚Р°Р±Р°Р·С‹
 void parseDB()
 {
 	std::string line;
 	Z_DB::ClientCounter+=2;
 
-	std::string toLogParse_start = "[INFO] Начало парсинга базы данных.\n";
-	std::string toLogParse_end = "[INFO] Конец парсинга базы данных.\n";
+	std::string toLogParse_start = "[INFO] РќР°С‡Р°Р»Рѕ РїР°СЂСЃРёРЅРіР° Р±Р°Р·С‹ РґР°РЅРЅС‹С….\n";
+	std::string toLogParse_end = "[INFO] РљРѕРЅРµС† РїР°СЂСЃРёРЅРіР° Р±Р°Р·С‹ РґР°РЅРЅС‹С….\n";
 	std::string toLogParse_info = "[INFO] ID payment Time Status Info NumberInTable Comment\n";
 	
 	printLog( toLogParse_start );
@@ -94,14 +94,14 @@ void parseDB()
 	printLog(toLogParse_end);
 }
 
-//Преднастройка датабазы при открытии программы
+//РџСЂРµРґРЅР°СЃС‚СЂРѕР№РєР° РґР°С‚Р°Р±Р°Р·С‹ РїСЂРё РѕС‚РєСЂС‹С‚РёРё РїСЂРѕРіСЂР°РјРјС‹
 void setupDB()
 {
 	openDB();
 	parseDB();
 }
 
-//Добавленик клиента в ДатаБазу
+//Р”РѕР±Р°РІР»РµРЅРёРє РєР»РёРµРЅС‚Р° РІ Р”Р°С‚Р°Р‘Р°Р·Сѓ
 void addClientToDB()
 {
 	Client client;
@@ -112,7 +112,7 @@ void addClientToDB()
 	client.set_timeElapsed_minutes();
 	client.set_workState();
 	clients.push_back(client);
-	std::string toLog = "[DEBUG] Клиент добавлен: " + client.get_ID() + " " + std::to_string(client.get_payment()) + " "
+	std::string toLog = "[DEBUG] РљР»РёРµРЅС‚ РґРѕР±Р°РІР»РµРЅ: " + client.get_ID() + " " + std::to_string(client.get_payment()) + " "
 		+ std::to_string(client.get_timeElapsed_minutes()) + " " + std::to_string(client.get_workState()) + " " + client.get_workInfo() + " "
 		+ std::to_string(client.get_numberInTable()) + " " + client.get_workComment() + "\n";
 	printLog(toLog);
@@ -125,35 +125,35 @@ void addClientToDB()
 		if( client.get_workState() == notStarted )
 		{
 			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "notStarted" << "," << client.get_timeElapsed_minutes() << "\n";
-			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
+			std::string toLog = "[INFO] РљР»РёРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ С„Р°Р№Р».\n";
 			printLog(toLog);
 			in.close();
 		}
 		else if ( client.get_workState() == inProgress_Payed )
 		{
 			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgress_Payed" << "," << client.get_timeElapsed_minutes() << "\n";
-			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
+			std::string toLog = "[INFO] РљР»РёРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ С„Р°Р№Р».\n";
 			printLog(toLog);
 			in.close();
 		}
 		else if ( client.get_workState() == inProgress_notPayed )
 		{
 			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgressnot_notPayed" << "," << client.get_timeElapsed_minutes() << "\n";
-			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
+			std::string toLog = "[INFO] РљР»РёРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ С„Р°Р№Р».\n";
 			printLog(toLog);
 			in.close();
 		}
 		else if ( client.get_workState() == completed_notPayed )
 		{
 			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_notPayed" << "," << client.get_timeElapsed_minutes() << "\n";
-			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
+			std::string toLog = "[INFO] РљР»РёРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ С„Р°Р№Р».\n";
 			printLog(toLog);
 			in.close();
 		}
 		else 
 		{
 			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_Payed" << "," << client.get_timeElapsed_minutes() << "\n";
-			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
+			std::string toLog = "[INFO] РљР»РёРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ С„Р°Р№Р».\n";
 			printLog(toLog);
 			in.close();
 		}
@@ -161,7 +161,7 @@ void addClientToDB()
 	}
 	else
 	{
-		std::string toLog = "[ERROR] Клиент не был добавлен. Файл закрыт.\n";
+		std::string toLog = "[ERROR] РљР»РёРµРЅС‚ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ. Р¤Р°Р№Р» Р·Р°РєСЂС‹С‚.\n";
 		printLog(toLog);
 	}
 }
