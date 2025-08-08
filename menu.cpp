@@ -1,6 +1,6 @@
 #include "menu.h"
 
-//Консольное меню
+//РљРѕРЅСЃРѕР»СЊРЅРѕРµ РјРµРЅСЋ
 void menuStart()
 {
 	bool isMenu = true;
@@ -8,9 +8,9 @@ void menuStart()
 	while (isMenu)
 	{
 		system("cls");
-		std::cout << "Главное меню программы.\nВведите тот пункт меню, который хотите выбрать:\n"
-			<< "0. Выход из программы.\n"
-			<< "1. Добавить клиента\n";
+		std::cout << "Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ РїСЂРѕРіСЂР°РјРјС‹.\nР’РІРµРґРёС‚Рµ С‚РѕС‚ РїСѓРЅРєС‚ РјРµРЅСЋ, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ РІС‹Р±СЂР°С‚СЊ:\n"
+			<< "0. Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.\n"
+			<< "1. Р”РѕР±Р°РІРёС‚СЊ РєР»РёРµРЅС‚Р°\n";
 		int choice_point = -1;
 		std::cin >> choice_point;
 
@@ -19,7 +19,7 @@ void menuStart()
 		case 0:
 		{
 			system("cls");
-			const std::string toLog_0 = "[INFO] Программа закрыта.\n";
+			const std::string toLog_0 = "[INFO] РџСЂРѕРіСЂР°РјРјР° Р·Р°РєСЂС‹С‚Р°.\n";
 			printLog(toLog_0);
 			isMenu = false;
 			break;
@@ -27,14 +27,14 @@ void menuStart()
 		case 1:
 		{
 			system("cls");
-			const std::string toLog_1 = "[INFO] Выбрано добавление клиента в список.\n";
+			const std::string toLog_1 = "[INFO] Р’С‹Р±СЂР°РЅРѕ РґРѕР±Р°РІР»РµРЅРёРµ РєР»РёРµРЅС‚Р° РІ СЃРїРёСЃРѕРє.\n";
 			printLog(toLog_1);
 			addClientToDB();
 			break;
 		}
 		default:
 			system("cls");
-			const std::string toLog_default = "[INFO] Неверный пункт меню был введён.\n";
+			const std::string toLog_default = "[INFO] РќРµРІРµСЂРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ Р±С‹Р» РІРІРµРґС‘РЅ.\n";
 			printLog(toLog_default);
 			break;
 		}
