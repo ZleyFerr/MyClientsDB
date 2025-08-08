@@ -20,28 +20,22 @@ enum EclientWorkState
 class Client
 {
 private:
-	std::string ID = "";                        //ID телеграмма пользователя или его номер
-	int payment = 0;                       // Цена за работу
-	int timeElapsed_minutes = 0;           // Затраченное время в минутах
+	std::string ID = "";                        // ID телеграмма пользователя или его номер
+	int payment = 0;														// Цена за работу
+	int timeElapsed_minutes = 0;								// Затраченное время в минутах
 	EclientWorkState workState = notStarted;		// Статус задачи
 	std::string workInfo = "";                  // Описание задачи
 	int numberInTable = 0;											// Номер в таблице [Присваеывается автоматически]
-	std::string workComment = "";								//Комментарий к задаче 
-
+	std::string workComment = "";								// Комментарий к задаче [Пуст по умолчанию]
+	
 public:
 	//Конструкторы
-	Client() 
-	{
-		std::string toLog = "Клиент добавлен: " + ID + " " + std::to_string(payment) + " "
-			+ std::to_string(timeElapsed_minutes) + " " + std::to_string(workState) + " " + workInfo + " "
-			+ std::to_string(numberInTable) + " " + workComment + "\n";
-		printLog(toLog);
-	};
+	Client() {};
 
 	Client(std::string ID, int payment, int timeElapsed_minutes, EclientWorkState workState, std::string workInfo, int numberInTable)
 		: ID(ID), payment( payment ), timeElapsed_minutes( timeElapsed_minutes ), workState( workState ), workInfo( workInfo ), numberInTable( numberInTable )
 	{
-		std::string toLog  = "Клиент добавлен: " + ID + " " + std::to_string( payment ) + " "
+		std::string toLog  = "[DEBUG] Клиент добавлен: " + ID + " " + std::to_string( payment ) + " "
 			+ std::to_string( timeElapsed_minutes ) + " " + std::to_string( workState ) + " " + workInfo + " " 
 			+ std::to_string( numberInTable ) + " " + workComment + "\n";
 
@@ -83,6 +77,7 @@ public:
 	//задать комментарий к задаче
 	void set_workComment();
 	void set_workComment( std::string workComment );
-
+	//Задаётся номер в табличке
+	void set_numberInTable(int number);
 };
 
