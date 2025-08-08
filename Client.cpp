@@ -41,33 +41,45 @@ void Client::set_ID()
 {
 	std::cout << "\nTelegramm ID или номер: ";
 	std::cin >> ID;
+	std::string toLog = "[DEBUG] ID был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_ID( std::string ID ) 
 {
 	this->ID = ID;
+	std::string toLog = "[DEBUG] ID был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_payment()
 {
-	std::cout << "\n:Плата за услугу: ";
+	std::cout << "\nПлата за услугу: ";
 	std::cin >> payment;
+	std::string toLog = "[DEBUG] Плата была изменена у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_payment( int payment )
 {
 	this->payment = payment;
+	std::string toLog = "[DEBUG] Плата была изменена у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_timeElapsed_minutes()
 {
-	std::cout << "\n:Затраченное время (в минутах): ";
+	std::cout << "\nЗатраченное время (в минутах): ";
 	std::cin >> timeElapsed_minutes;
+	std::string toLog = "[DEBUG] Время было изменено у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_timeElapsed_minutes( int timeElapsed_minutes )
 {
 	this->timeElapsed_minutes = timeElapsed_minutes;
+	std::string toLog = "[DEBUG] Время было изменено у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workState()
@@ -104,36 +116,51 @@ void Client::set_workState()
 	default:
 		break;
 	}
-
+	std::string toLog = "[DEBUG] Статус работы был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workState( EclientWorkState workState )
 {
 	this->workState = workState;
+	std::string toLog = "[DEBUG] Статус работы был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workInfo()
 {
-	std::cout << "\n:Описание работы: ";
-	std::cin.clear();
+	std::cout << "\nОписание работы: ";
+	std::cin.ignore(100000, '\n');
 	std::getline(std::cin, workInfo);
-	std::cin.ignore();
+	std::string toLog = "[DEBUG] Описание работы было изменено у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workInfo( std::string workInfo )
 {
 	this->workInfo = workInfo;
+	std::string toLog = "[DEBUG] Описание работы было изменено у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workComment()
 {
-	std::cout << "\n:Комментарий к работе: ";
-	std::cin.clear();
+	std::cout << "\nКомментарий к работе: ";
+	std::cin.ignore(100000, '\n');
 	std::getline(std::cin, workComment);
-	std::cin.ignore();
+	std::string toLog = "[DEBUG] Комментарий к работе был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
 }
 
 void Client::set_workComment( std::string workComment )
 {
 	this->workComment = workComment;
+	std::string toLog = "[DEBUG] Комментарий к работе был изменён у записи под номером " + std::to_string(numberInTable) + "\n";
+	printLog(toLog);
+}
+
+void Client::set_numberInTable(int number)
+{
+	numberInTable = number;
+	std::string toLog = "[DEBUG] номер был присвоен, номер записи: " + std::to_string(numberInTable) + "\n";
 }
