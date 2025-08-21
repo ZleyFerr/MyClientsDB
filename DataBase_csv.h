@@ -7,10 +7,18 @@
 #include <windows.h>
 #include <fstream>
 #include <vector>
+#include <set>
 #include "Logs.h"
 #include "Client.h"
+#include "ClientSorting.h"
+#include "DataBase_TopCreator.h"
 
 void openDB();
 void parseDB();
 void setupDB();
 void addClientToDB();
+void printDB();
+void sortDB_ID();
+void sortDB_timeElapsed();
+void sortDB_payment();
+void findUserInDB();
