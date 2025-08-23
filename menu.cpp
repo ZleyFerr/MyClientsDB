@@ -92,7 +92,7 @@ void menuStart()
 			system("cls");
 			const std::string toLog_7 = "[INFO] Выбран вывод топа клиентов по количеству заказов\n";
 			printLog(toLog_7);
-			findUserInDB();
+			amountTopPrint();
 			menuWaitButton();
 			break;
 		}
@@ -101,7 +101,7 @@ void menuStart()
 			system("cls");
 			const std::string toLog_7 = "[INFO] Выбран вывод топа клиентов по затраченному времени\n";
 			printLog(toLog_7);
-			findUserInDB();
+			timeElapsedTopPrint();
 			menuWaitButton();
 			break;
 		}
@@ -110,7 +110,7 @@ void menuStart()
 			system("cls");
 			const std::string toLog_7 = "[INFO] Выбран вывод топа клиентов по принесенной прибыли\n";
 			printLog(toLog_7);
-			findUserInDB();
+			paymentTopPrint();
 			menuWaitButton();
 			break;
 		}
