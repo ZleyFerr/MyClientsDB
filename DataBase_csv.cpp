@@ -309,17 +309,90 @@ void topsFill()
 	for (int i = 0; i < clientsID.size(); i++)
 	{
 		amountOfOrdersTop amountObj;
+		std::string tempID = *next(clientsID.begin(), i);
 		paymentTop paymentObj;
 		timeElapsedTop timeElapsedObj;
+		amountObj.ID = tempID;
+		paymentObj.ID = tempID;
+		timeElapsedObj.ID = tempID;
 		amountOfOrdersIDtop.push_back(amountObj);
 		paymentIDtop.push_back(paymentObj);
 		timeElapsedIDtop.push_back(timeElapsedObj);
 	}
-
-	for (int i = 0; i < clients.size(); i++)
+	
+	std::cout << "Формирование топа может занять некоторое время..\n";
+	for (int i = 0; i < clientsID.size(); i++)
 	{
-
+		for (int j = 0; j < clients.size(); j++)
+		{
+			if (amountOfOrdersIDtop[i].ID == clients[j].get_ID())
+			{
+				amountOfOrdersIDtop[i].amountOfOrders++;
+			}
+			if (paymentIDtop[i].ID == clients[j].get_ID())
+			{
+				paymentIDtop[i].payment += clients[j].get_payment();
+			}
+			if (timeElapsedIDtop[i].ID == clients[j].get_ID())
+			{
+				timeElapsedIDtop[i].timeElapsed += clients[j].get_timeElapsed_minutes();
+			}
+		}
 	}
+}
+
+//Вывод топа по количеству заказов
+void amountTopPrint()
+{
+	topsFill();
+	std::sort(amountOfOrdersIDtop.begin(), amountOfOrdersIDtop.end(), sort_by_amount);
+	for (int i = 0; i < clientsID.size(); i++)
+	{
+		std::cout << "ID: " << amountOfOrdersIDtop[i].ID << "\n"
+			<< "количество заказов: " << amountOfOrdersIDtop[i].amountOfOrders << "\n";
+			std::cout << "-------------------------------\n";
+	}
+	const std::string toLog = "[INFO] Топ по количеству заказов выведен в консоль.\n";
+	printLog(toLog);
+	timeElapsedIDtop.clear();
+	paymentIDtop.clear();
+	amountOfOrdersIDtop.clear();
+}
+
+//Вывод топа по количеству прибыли
+void paymentTopPrint()
+{
+	topsFill();
+	std::sort(paymentIDtop.begin(), paymentIDtop.end(), sort_by_payment_top);
+	for (int i = 0; i < clientsID.size(); i++)
+	{
+		std::cout << "ID: " << paymentIDtop[i].ID << "\n"
+			<< "сумма заказов: " << paymentIDtop[i].payment << "\n";
+		std::cout << "-------------------------------\n";
+	}
+	const std::string toLog = "[INFO] Топ по цене заказов выведен в консоль.\n";
+	printLog(toLog);
+	timeElapsedIDtop.clear();
+	paymentIDtop.clear();
+	amountOfOrdersIDtop.clear();
+}
+
+//Вывод топа по количеству затраченного времени
+void timeElapsedTopPrint()
+{
+	topsFill();
+	std::sort(timeElapsedIDtop.begin(), timeElapsedIDtop.end(), sort_by_timeElapsed_top);
+	for (int i = 0; i < clientsID.size(); i++)
+	{
+		std::cout << "ID: " << timeElapsedIDtop[i].ID << "\n"
+			<< "время выполнения заказов: " << timeElapsedIDtop[i].timeElapsed << "\n";
+		std::cout << "-------------------------------\n";
+	}
+	const std::string toLog = "[INFO] Топ по времени выведен в консоль.\n";
+	printLog(toLog);
+	timeElapsedIDtop.clear();
+	paymentIDtop.clear();
+	amountOfOrdersIDtop.clear();
 }
 
 
