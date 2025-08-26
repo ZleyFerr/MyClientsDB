@@ -18,7 +18,12 @@ void menuStart()
 			<< "6. Узнать статиситику по ID\n"
 			<< "7. Вывести топ клиентов по количеству заказов\n"
 			<< "8. Вывести топ клиентов по затраченному времени\n"
-			<< "9. Вывести топ клиентов по количеству прибыли\n";
+			<< "9. Вывести топ клиентов по количеству прибыли\n"
+			<< "10. Вывести всю статистику\n"
+			<< "11. Вывести заработок в час\n"
+			<< "12. Вывести общее количество заказов\n"
+			<< "13. Вывести общее количество прибыли\n"
+			<< "14. Вывести общее количество затраченного времени\n";
 		int choice_point = -1;
 		std::cin >> choice_point;
 
@@ -99,8 +104,8 @@ void menuStart()
 		case 8:
 		{
 			system("cls");
-			const std::string toLog_7 = "[INFO] Выбран вывод топа клиентов по затраченному времени\n";
-			printLog(toLog_7);
+			const std::string toLog_8 = "[INFO] Выбран вывод топа клиентов по затраченному времени\n";
+			printLog(toLog_8);
 			timeElapsedTopPrint();
 			menuWaitButton();
 			break;
@@ -108,9 +113,55 @@ void menuStart()
 		case 9:
 		{
 			system("cls");
-			const std::string toLog_7 = "[INFO] Выбран вывод топа клиентов по принесенной прибыли\n";
-			printLog(toLog_7);
+			const std::string toLog_9 = "[INFO] Выбран вывод топа клиентов по принесенной прибыли\n";
+			printLog(toLog_9);
 			paymentTopPrint();
+			menuWaitButton();
+			break;
+		}
+		case 10:
+		{
+			system("cls");
+			const std::string toLog_10 = "[INFO] Выбран вывод всей статистики\n";
+			printLog(toLog_10);
+			findAllStatistics();
+			menuWaitButton();
+			break;
+		}
+		case 11:
+		{
+			system("cls");
+			const std::string toLog_11 = "[INFO] Выбран вывод заработка в час\n";
+			printLog(toLog_11);
+			findFarmPerHour();
+			menuWaitButton();
+			break;
+
+		}
+		case 12:
+		{
+			system("cls");
+			const std::string toLog_12 = "[INFO] Выбран вывод общего количества заказов\n";
+			printLog(toLog_12);
+			findTotalOrders();
+			menuWaitButton();
+			break;
+		}
+		case 13:
+		{
+			system("cls");
+			const std::string toLog_13 = "[INFO] Выбран вывод общего количества прибыли\n";
+			printLog(toLog_13);
+			findTotalPayment();
+			menuWaitButton();
+			break;
+		}
+		case 14:
+		{
+			system("cls");
+			const std::string toLog_14 = "[INFO] Выбран вывод общего количества затраченного времени\n";
+			printLog(toLog_14);
+			findTotalTime();
 			menuWaitButton();
 			break;
 		}
