@@ -22,3 +22,8 @@ void sortDB_ID();
 void sortDB_timeElapsed();
 void sortDB_payment();
 void findUserInDB();
+void findTotalTime();
+void findTotalPayment();
+void findTotalOrders();
+void findAllStatistics();
+void findFarmPerHour();
