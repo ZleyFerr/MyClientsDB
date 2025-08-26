@@ -303,6 +303,7 @@ void findUserInDB()
 	}
 }
 
+
 //Заполнение топов по определенным параметрам
 void topsFill()
 {
@@ -395,5 +396,102 @@ void timeElapsedTopPrint()
 	amountOfOrdersIDtop.clear();
 }
 
+//Вывод общего затраченного времени
+void findTotalTime()
+{
+	int totalTime = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalTime += clients[i].get_timeElapsed_minutes();
+	}
+	std::cout << "Общее затраченное время: " << totalTime << "\n";
+	const std::string toLog = "[INFO] Общее затраченное время выведено в консоль.\n";
+	printLog(toLog);
+}
 
+//Вывод общего заработка
+void findTotalPayment()
+{
+	int totalPayment = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalPayment += clients[i].get_payment();
+	}
+	std::cout << "Общий заработок: " << totalPayment << "\n";
+	const std::string toLog = "[INFO] Общий заработок выведено в консоль.\n";
+	printLog(toLog);
+}
 
+//Вывод общего количества заказов
+void findTotalOrders()
+{
+	int totalOrders = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalOrders++;
+	}
+	std::cout << "Общее количество заказов: " << totalOrders << "\n";
+	const std::string toLog = "[INFO] Общее количество заказов выведено в консоль.\n";
+	printLog(toLog);
+}
+
+//Вывод заработка в час
+void findFarmPerHour()
+{
+	int totalOrders = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalOrders++;
+	}
+
+	int totalPayment = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalPayment += clients[i].get_payment();
+	}
+
+	int totalTime = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalTime += clients[i].get_timeElapsed_minutes();
+	}
+	double FarmPerHour = double(totalPayment)/double(totalTime)*60;
+
+	std::cout << "Заработок в час: " << FarmPerHour << "\n";
+	std::string toLog = "[INFO] Средний заработок в час выведено в консоль: " + std::to_string(FarmPerHour) + "\n";
+	printLog(toLog);
+}
+
+//Вывод всей статистики
+void findAllStatistics()
+{
+	int totalOrders = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalOrders++;
+	}
+
+	int totalPayment = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalPayment += clients[i].get_payment();
+	}
+
+	int totalTime = 0;
+	for (int i = 0; i < clients.size(); i++)
+	{
+		totalTime += clients[i].get_timeElapsed_minutes();
+	}
+
+	double FarmPerHour = double(totalPayment) / double(totalTime) * 60;
+	double averageOrderPrice = double(totalPayment) / double(totalOrders);
+
+	std::cout << "Заработок в час: " << FarmPerHour << "\n";
+	std::cout << "Средний заработок с клиента: " << averageOrderPrice << "\n";
+	std::cout << "Общее затраченное время: " << totalTime << "\n";
+	std::cout << "Общий заработок: " << totalPayment << "\n";
+	std::cout << "Общее количество заказов: " << totalOrders << "\n";
+
+	const std::string toLog = "[INFO] Вся статистика выведена в консоль.\n";
+	printLog(toLog);
+}
