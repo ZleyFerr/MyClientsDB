@@ -140,7 +140,7 @@ void addClientToDB()
 		if( client.get_workState() == notStarted )
 		{
 			in << "\n";
-			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "notStarted" << "," << client.get_timeElapsed_minutes() << "\n";
+			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "notStarted" << "," << client.get_timeElapsed_minutes();
 			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
 			printLog(toLog);
 			clientsID.insert(client.get_ID());
@@ -149,7 +149,7 @@ void addClientToDB()
 		else if ( client.get_workState() == inProgress_Payed )
 		{
 			in << "\n";
-			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgress_Payed" << "," << client.get_timeElapsed_minutes() << "\n";
+			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgress_Payed" << "," << client.get_timeElapsed_minutes();
 			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
 			printLog(toLog);
 			clientsID.insert(client.get_ID());
@@ -158,7 +158,7 @@ void addClientToDB()
 		else if ( client.get_workState() == inProgress_notPayed )
 		{
 			in << "\n";
-			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgressnot_notPayed" << "," << client.get_timeElapsed_minutes() << "\n";
+			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "inProgressnot_notPayed" << "," << client.get_timeElapsed_minutes();
 			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
 			printLog(toLog);
 			clientsID.insert(client.get_ID());
@@ -167,7 +167,7 @@ void addClientToDB()
 		else if ( client.get_workState() == completed_notPayed )
 		{
 			in << "\n";
-			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_notPayed" << "," << client.get_timeElapsed_minutes() << "\n";
+			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_notPayed" << "," << client.get_timeElapsed_minutes();
 			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
 			printLog(toLog);
 			clientsID.insert(client.get_ID());
@@ -176,7 +176,7 @@ void addClientToDB()
 		else 
 		{
 			in << "\n";
-			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_Payed" << "," << client.get_timeElapsed_minutes() << "\n";
+			in << client.get_ID() << "," << client.get_workInfo() << "," << client.get_payment() << "," << "completed_Payed" << "," << client.get_timeElapsed_minutes();
 			std::string toLog = "[INFO] Клиент был добавлен в файл.\n";
 			printLog(toLog);
 			clientsID.insert(client.get_ID());
